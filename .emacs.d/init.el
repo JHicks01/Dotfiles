@@ -64,12 +64,7 @@
   (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
 ;; Line Numbers
-(use-package linum-relative
-  :ensure t
-  :config
-  (add-hook 'prog-mode-hook 'linum-relative-mode)
-  (add-hook 'conf-mode-hook 'linum-relative-mode)
-  (setq linum-relative-current-symbol ""))
+(setq display-line-numbers relative)
 
 ;; Column Numbers
 (column-number-mode)
@@ -137,7 +132,6 @@
 (use-package company
   :ensure t
   :config
-  (setq company-idle-delay 0.1)
   (setq company-tooltip-align-annotations t)
   ;; (use-package company-childframe
   ;;   :ensure t

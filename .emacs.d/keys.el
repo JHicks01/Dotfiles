@@ -78,6 +78,7 @@
 ;; Company
 (define-key company-active-map (kbd "C-j") 'company-select-next)
 (define-key company-active-map (kbd "C-k") 'company-select-previous)
+(global-set-key (kbd "M-/") 'company-complete)
 
 ;; Org
 (add-to-list 'load-path "~/.emacs.d/plugins/evil-org-mode")
@@ -115,16 +116,16 @@
 
 ;; Split and Focus Windows in 1 Step
 (defun evil-window-vsplit-and-focus ()
-  "Split window vertically and move right to focus it"
+  "Split window vertically and move right to focus it."
   (interactive)
   (evil-window-vsplit)
   (other-window 1))
 
-(defun evil-window-split-and-focus ()
-  "Split window vertically and move right to focus it"
+(defun evil-window-hsplit-and-focus ()
+  "Split window horizontally and move down to focus it."
   (interactive)
   (evil-window-split)
   (other-window 1))
 
 (define-key evil-normal-state-map (kbd "C-w C-v") 'evil-window-vsplit-and-focus)
-(define-key evil-normal-state-map (kbd "C-w C-s") 'evil-window-split-and-focus)
+(define-key evil-normal-state-map (kbd "C-w C-s") 'evil-window-hsplit-and-focus)
