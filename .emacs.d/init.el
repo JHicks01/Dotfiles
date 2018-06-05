@@ -133,9 +133,7 @@
   :ensure t
   :config
   (setq company-tooltip-align-annotations t)
-  ;; (use-package company-childframe
-  ;;   :ensure t
-  ;;   :config (company-childframe-mode 1))
+  (setq company-idle-delay nil)
 
   (global-company-mode))
 
@@ -258,10 +256,10 @@
   :ensure t
   :defer t)
 
-(add-hook 'c-mode-hook (lambda () (setq flycheck-checker 'lsp-ui)))
-(add-hook 'c-mode-hook (lambda() (flycheck-mode)))
-(add-hook 'c++-mode-hook (lambda () (setq flycheck-checker 'lsp-ui)))
-(add-hook 'c++-mode-hook (lambda() (flycheck-mode)))
+;; (add-hook 'c-mode-hook (lambda () (setq flycheck-checker 'lsp-ui)))
+;; (add-hook 'c-mode-hook (lambda() (flycheck-mode)))
+;; (add-hook 'c++-mode-hook (lambda () (setq flycheck-checker 'lsp-ui)))
+;; (add-hook 'c++-mode-hook (lambda() (flycheck-mode)))
 
 ;; Asm
 (add-hook 'asm-mode-hook (lambda()
