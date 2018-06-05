@@ -64,7 +64,7 @@
   (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
 ;; Line Numbers
-(setq display-line-numbers relative)
+(setq-default display-line-numbers 'relative)
 
 ;; Column Numbers
 (column-number-mode)
