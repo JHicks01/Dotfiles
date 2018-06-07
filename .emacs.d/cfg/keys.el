@@ -22,15 +22,15 @@
   (evil-mode 1))
 
 ;; Helper Functions
-(defun open-config-file()
+(defun open-config-file ()
   "Open my config file"
   (interactive)
   (find-file "~/.emacs.d/init.el"))
 
-(defun open-keys-file()
+(defun open-keys-file ()
   "Open my keybindings file"
   (interactive)
-  (find-file "~/.emacs.d/keys.el"))
+  (find-file "~/.emacs.d/cfg/keys.el"))
 
 ;; General.el Setup
 (setq my-leader "SPC")
