@@ -1,14 +1,11 @@
 ;; Evil
 (use-package evil
-  :ensure t
   :config 
 
   (use-package evil-surround
-    :ensure t
     :config (global-evil-surround-mode 1))
 
   (use-package evil-escape
-    :ensure t
     :config
     (evil-escape-mode)
     (setq evil-escape-key-sequence "jk"))
@@ -16,7 +13,6 @@
   (setq-default evil-shift-round 'nil)
 
   (use-package evil-commentary
-    :ensure t
     :config (evil-commentary-mode))
 
   (evil-mode 1))
@@ -51,7 +47,6 @@
   (define-key (symbol-value element) (kbd "SPC") 'nil))
 
 (use-package general
-  :ensure t
   :config
   (setq general-default-keymaps '(evil-normal-state-map evil-motion-state-map)))
 
@@ -82,8 +77,7 @@
 
 ;; Org
 (add-to-list 'load-path "~/.emacs.d/plugins/evil-org-mode")
-(use-package evil-org
-  :ensure t)
+(use-package evil-org)
 
 (general-define-key :prefix my-major-mode-leader
                     :keymaps 'org-mode-map

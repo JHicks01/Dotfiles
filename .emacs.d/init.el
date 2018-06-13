@@ -13,6 +13,7 @@
 
 (package-install 'use-package)
 (eval-when-compile (require 'use-package))
+(setq use-package-always-ensure t)
 
 (defun load-cfg-files ()
   "Load list of config files.

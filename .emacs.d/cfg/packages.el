@@ -9,14 +9,12 @@
 
 ;; Ivy
 (use-package ivy
-  :ensure t
   :config
 
-  (use-package flx
-    :ensure t)
+  (use-package flx)
 
   (use-package ivy-xref
-    :ensure t
+    :defer t
     :config
     (setq xref-show-xrefs-function #'ivy-xref-show-xrefs))
 
@@ -39,41 +37,33 @@
                              "\\`\\*lsp")))
 
 (use-package counsel
-  :ensure t
   :config
   (setq counsel-find-file-ignore-regexp "^.cquery"))
 
-(use-package counsel-projectile
-  :ensure t)
+(use-package counsel-projectile)
 
-(use-package swiper
-  :ensure t)
+(use-package swiper)
 
-(use-package helm-make
-  :ensure t
-  :defer t)
+(use-package helm-make)
 
 ;; Avy
-(use-package avy
-  :ensure t
-  :defer t)
+(use-package avy)
 
 ;; Company
 (use-package company
-  :ensure t
   :config
+  (use-package company-childframe
+    :config (company-childframe-mode 1))
+
   (setq company-tooltip-align-annotations t)
-  (setq company-idle-delay 0.1)
   (global-company-mode))
 
 ;; Flycheck
 (use-package flycheck
-  :ensure t
-  :defer t)
+  :config (setq flycheck-check-syntax-automatically '(mode-enabled save)))
 
 ;; Projectile
 (use-package projectile
-  :ensure t
   :defer t
   :config
   (projectile-mode)
@@ -89,35 +79,33 @@ Set `project-notes-file' to change the file name."
 
 ;; LSP
 (use-package lsp-mode
-  :ensure t
   :config
   (setq lsp-highlight-symbol-at-point nil)
 
   (use-package lsp-ui
-    :ensure t
     :config
     (add-hook 'lsp-mode-hook 'lsp-ui-mode)
-    (setq lsp-ui-sideline-enable nil))
+    (setq lsp-ui-sideline-enable nil)
+    (setq lsp-ui-doc-enable nil))
   
   (use-package company-lsp
-    :ensure t
     :config
     (push 'company-lsp company-backends)))
 
 ;; Yasnippet
 (use-package yasnippet
-  :ensure t
+  :defer t
   :config (yas-global-mode))
 
 ;; Column Enforce Mode
 (use-package column-enforce-mode
-  :ensure t
+  :defer t
   :config
   (add-hook 'prog-mode-hook 'column-enforce-mode))
 
 ;; Popwin
 (use-package popwin
-  :ensure t
+  :defer t
   :config
   (popwin-mode)
   (setq popwin:popup-window-height 21)
@@ -127,12 +115,10 @@ Set `project-notes-file' to change the file name."
                '(flycheck-error-list-mode :noselect t)))
 
 ;; Smex
-(use-package smex
-  :ensure t)
+(use-package smex)
 
 ;; Smooth Scrolling
 (use-package smooth-scrolling
-  :ensure t
   :config
   (setq scroll-step 1)
   (setq scroll-conservatively 10000)
@@ -140,7 +126,30 @@ Set `project-notes-file' to change the file name."
 
 ;; Which Key
 (use-package which-key
-  :ensure t
+  :defer t
   :config
   (which-key-mode)
   (setq which-key-idle-delay 1.5))
+
+;; Smartparens
+(use-package smartparens
+  :config
+  (add-hook 'prog-mode-hook 'smartparens-mode)
+  (sp-pair "'" "'")
+  (sp-local-pair 'emacs-lisp-mode "'" nil :actions nil)
+  ;; (sp-pair "'" nil :actions nil)
+  (setq sp-highlight-pair-overlay nil)
+  (setq sp-highlight-wrap-overlay nil)
+  (setq sp-highlight-wrap-tag-overlay nil)
+
+  (defun my-create-newline-and-enter-sexp (&rest _ignored)
+    "Open a new brace or bracket expression, with relevant newlines and indent. "
+    (newline)
+    (indent-according-to-mode)
+    (forward-line -1)
+    (indent-according-to-mode))
+
+  (sp-pair "{" nil :post-handlers '((my-create-newline-and-enter-sexp "RET"))))
+
+(use-package evil-smartparens
+  :config (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode))
