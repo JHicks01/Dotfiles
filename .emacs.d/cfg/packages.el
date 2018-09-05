@@ -52,8 +52,8 @@
 ;; Company
 (use-package company
   :config
-  (use-package company-childframe
-    :config (company-childframe-mode 1))
+  (use-package company-posframe
+    :config (company-posframe-mode 1))
 
   (setq company-tooltip-align-annotations t)
   (global-company-mode))
@@ -64,7 +64,6 @@
 
 ;; Projectile
 (use-package projectile
-  :defer t
   :config
   (projectile-mode)
   (add-to-list 'projectile-globally-ignored-directories "build/"))
@@ -99,13 +98,11 @@ Set `project-notes-file' to change the file name."
 
 ;; Column Enforce Mode
 (use-package column-enforce-mode
-  :defer t
   :config
   (add-hook 'prog-mode-hook 'column-enforce-mode))
 
 ;; Popwin
 (use-package popwin
-  :defer t
   :config
   (popwin-mode)
   (setq popwin:popup-window-height 21)

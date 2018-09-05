@@ -2,13 +2,17 @@
 (use-package better-defaults)
 
 ;; Theme
-(load-file "~/.emacs.d/custom-themes/dracula.el")
+(load-file "~/.emacs.d/custom-themes/doom.el")
 
 ;; Mode Line
-(use-package rich-minority
-  :config
-  (setf rm-blacklist "")
-  (rich-minority-mode 1))
+(use-package doom-modeline
+      :ensure t
+      :hook (after-init . doom-modeline-init))
+
+;; (use-package rich-minority
+;;   :config
+;;   (setf rm-blacklist "")
+;;   (rich-minority-mode 1))
 
 ;; Font
 (set-face-attribute 'default nil :font "Iosevka-14")

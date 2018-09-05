@@ -28,44 +28,10 @@
   (interactive)
   (find-file "~/.emacs.d/cfg/keys.el"))
 
-;; General.el Setup
-(setq my-leader "SPC")
-(setq my-major-mode-leader ",")
-
-(define-key evil-motion-state-map (kbd ",") 'nil)
-
-(setq space-bound-maps '(evil-motion-state-map
-                         magit-status-mode-map
-                         magit-revision-mode-map
-                         magit-log-mode-map
-                         magit-diff-mode-map
-                         magit-process-mode-map
-                         compilation-mode-map
-                         help-mode-map))
-
-(dolist (element space-bound-maps)
-  (define-key (symbol-value element) (kbd "SPC") 'nil))
-
-(use-package general
-  :config
-  (setq general-default-keymaps '(evil-normal-state-map evil-motion-state-map)))
-
-;; Global keybindings
-(general-define-key :prefix my-leader
-                    "!" 'shell-command
-                    "g" 'magit-status
-                    "fc" 'open-config-file
-                    "fk" 'open-keys-file
-                    "TAB" 'evil-buffer
-                    "el" 'flycheck-list-errors
-                    "en" 'flycheck-next-error
-                    "ss" 'swiper
-                    "sw" 'avy-goto-word-1)
-
 (define-key ivy-minibuffer-map (kbd "C-j") 'ivy-next-line)
 (global-set-key (kbd "M-x") 'counsel-M-x)
-(define-key projectile-mode-map (kbd "C-c p s s") 'counsel-projectile-ag)
-(define-key projectile-mode-map (kbd "C-c p n") 'goto-project-notes)
+;; (define-key projectile-mode-map (kbd "C-c p s s") 'counsel-projectile-ag)
+;; (define-key projectile-mode-map (kbd "C-c p n") 'goto-project-notes)
 (define-key ivy-minibuffer-map (kbd "C-h") 'counsel-up-directory)
 (define-key ivy-minibuffer-map (kbd "C-l") 'ivy-partial-or-done)
 (define-key ivy-minibuffer-map (kbd "C-k") 'ivy-previous-line)
@@ -79,25 +45,8 @@
 (add-to-list 'load-path "~/.emacs.d/plugins/evil-org-mode")
 (use-package evil-org)
 
-(general-define-key :prefix my-major-mode-leader
-                    :keymaps 'org-mode-map
-                    :states '(normal)
-                    "a" 'org-archive-subtree
-                    "d" 'org-deadline
-                    "s" 'org-schedule
-                    "p" 'org-pomodoro
-                    "e" 'org-export-dispatch)
-
 (evil-define-key 'normal org-mode-map
   (kbd "RET") 'org-open-at-point)
-
-;; C/C++
-(general-define-key :prefix my-major-mode-leader
-                    :keymaps '(c-mode-map c++-mode-map)
-                    :states '(normal)
-                    "cc" 'helm-make-projectile
-                    "fs" 'xref-find-apropos
-                    "fr" 'xref-find-references)
 
 (evil-define-key 'normal c-mode-map
   (kbd "gd") 'xref-find-definitions)
