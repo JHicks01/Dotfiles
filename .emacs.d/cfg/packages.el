@@ -38,7 +38,8 @@
 
 (use-package counsel
   :config
-  (setq counsel-find-file-ignore-regexp "^.cquery"))
+  (setq counsel-find-file-ignore-regexp "^.cquery")
+  (counsel-mode))
 
 (use-package counsel-projectile)
 
@@ -123,7 +124,6 @@ Set `project-notes-file' to change the file name."
 
 ;; Which Key
 (use-package which-key
-  :defer t
   :config
   (which-key-mode)
   (setq which-key-idle-delay 1.5))
@@ -140,7 +140,7 @@ Set `project-notes-file' to change the file name."
   (setq sp-highlight-wrap-tag-overlay nil)
 
   (defun my-create-newline-and-enter-sexp (&rest _ignored)
-    "Open a new brace or bracket expression, with relevant newlines and indent. "
+    "Open a new brace or bracket expression, with relevant newlines and indent."
     (newline)
     (indent-according-to-mode)
     (forward-line -1)

@@ -28,13 +28,27 @@
   (interactive)
   (find-file "~/.emacs.d/cfg/keys.el"))
 
+;;Ivy
 (define-key ivy-minibuffer-map (kbd "C-j") 'ivy-next-line)
-(global-set-key (kbd "M-x") 'counsel-M-x)
-;; (define-key projectile-mode-map (kbd "C-c p s s") 'counsel-projectile-ag)
-;; (define-key projectile-mode-map (kbd "C-c p n") 'goto-project-notes)
-(define-key ivy-minibuffer-map (kbd "C-h") 'counsel-up-directory)
 (define-key ivy-minibuffer-map (kbd "C-l") 'ivy-partial-or-done)
 (define-key ivy-minibuffer-map (kbd "C-k") 'ivy-previous-line)
+
+;;Counsel
+(define-key ivy-minibuffer-map (kbd "C-h") 'counsel-up-directory)
+
+;;Swiper
+(global-set-key (kbd "C-s") 'swiper)
+
+;;Avy
+(global-set-key (kbd "C-x j") 'avy-goto-word-1)
+
+;;Projectile
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+(define-key projectile-mode-map (kbd "C-c p s s") 'counsel-projectile-ag)
+(define-key projectile-mode-map (kbd "C-c p n") 'goto-project-notes)
+
+;;Magit
+(global-set-key (kbd "C-x g") 'magit-status)
 
 ;; Company
 (define-key company-active-map (kbd "C-j") 'company-select-next)
