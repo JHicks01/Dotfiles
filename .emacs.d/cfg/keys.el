@@ -40,7 +40,7 @@
 (global-set-key (kbd "C-s") 'swiper)
 
 ;;Avy
-(global-set-key (kbd "C-x j") 'avy-goto-word-1)
+(global-set-key (kbd "C-c j") 'avy-goto-word-1)
 
 ;;Projectile
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
@@ -62,14 +62,14 @@
 (evil-define-key 'normal org-mode-map
   (kbd "RET") 'org-open-at-point)
 
+;;C/C++
 (evil-define-key 'normal c-mode-map
   (kbd "gd") 'xref-find-definitions)
 (evil-define-key 'normal c++-mode-map
   (kbd "gd") 'xref-find-definitions)
 
-;; Rust
-(evil-define-key 'normal rust-mode-map
-  (kbd "gd") 'racer-find-definition)
+(define-key c-mode-map (kbd "C-c c") 'helm-make-projectile)
+(define-key c++-mode-map (kbd "C-c c") 'helm-make-projectile)
 
 ;; Split and Focus Windows in 1 Step
 (defun evil-window-vsplit-and-focus ()

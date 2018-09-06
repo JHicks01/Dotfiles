@@ -21,30 +21,6 @@
                            (local-set-key (kbd "RET")
                                           'electric-indent-just-newline)))
 
-;; Rust
-(use-package rust-mode
-  :defer t
-  :config
-  (setq rust-format-on-save t)
-  (setq rust-rustfmt-bin "~/.cargo/bin/rustfmt"))
-
-(use-package cargo)
-
-(use-package racer
-  :defer t
-  :config
-  (setq racer-cmd "/usr/local/bin/racer")
-  (setq racer-rust-src-path "/usr/local/src/rust/src"))
-
-(use-package company-racer
-    :config (add-to-list 'company-backends 'company-racer))
-    
-(use-package flycheck-rust
-  :defer t
-  :config
-  (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
-  (add-hook 'rust-mode-hook (lambda() (flycheck-mode))))
-
 ;; Haskell
 (use-package haskell-mode)
 
