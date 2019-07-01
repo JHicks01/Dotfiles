@@ -13,8 +13,8 @@
 
 (use-package cquery
   :config
-  (add-hook 'c-mode-hook (lambda() (lsp-cquery-enable)))
-  (add-hook 'c++-mode-hook (lambda() (lsp-cquery-enable))))
+  (add-hook 'c-mode-hook (lambda() (lsp)))
+  (add-hook 'c++-mode-hook (lambda() (lsp))))
 
 ;; Asm
 (add-hook 'asm-mode-hook (lambda()

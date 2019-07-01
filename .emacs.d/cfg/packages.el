@@ -80,7 +80,7 @@ Set `project-notes-file' to change the file name."
 ;; LSP
 (use-package lsp-mode
   :config
-  (setq lsp-highlight-symbol-at-point nil)
+  (setq lsp-enable-symbol-highlighting nil)
 
   (use-package lsp-ui
     :config
@@ -125,8 +125,7 @@ Set `project-notes-file' to change the file name."
 ;; Which Key
 (use-package which-key
   :config
-  (which-key-mode)
-  (setq which-key-idle-delay 1.5))
+  (which-key-mode))
 
 ;; Smartparens
 (use-package smartparens

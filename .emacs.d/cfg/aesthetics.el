@@ -6,17 +6,11 @@
 
 ;; Mode Line
 (use-package doom-modeline
-      :ensure t
       :hook (after-init . doom-modeline-init))
 
-;; (use-package rich-minority
-;;   :config
-;;   (setf rm-blacklist "")
-;;   (rich-minority-mode 1))
-
 ;; Font
-(set-face-attribute 'default nil :font "Iosevka-14")
-(set-frame-font "Iosevka-14" nil t)
+(set-face-attribute 'default nil :font "Iosevka-12")
+(set-frame-font "Iosevka-12" nil t)
 
 ;; Rainbow Delimiters
 (use-package rainbow-delimiters
