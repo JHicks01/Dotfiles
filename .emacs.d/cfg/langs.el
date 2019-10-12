@@ -4,12 +4,12 @@
 (use-package cmake-mode)
 
 (add-hook 'c-mode-hook (lambda () (setq flycheck-checker 'lsp-ui)))
-(add-hook 'c-mode-hook (lambda () (setq flycheck-check-syntax-automatically '(mode-enabled save))))
 (add-hook 'c-mode-hook (lambda() (flycheck-mode)))
+(add-hook 'c-mode-hook (lambda() (flymake-mode 0)))
 
 (add-hook 'c++-mode-hook (lambda () (setq flycheck-checker 'lsp-ui)))
-(add-hook 'c++-mode-hook (lambda () (setq flycheck-check-syntax-automatically '(mode-enabled save))))
 (add-hook 'c++-mode-hook (lambda() (flycheck-mode)))
+(add-hook 'c++-mode-hook (lambda() (flymake-mode 0)))
 
 (use-package cquery
   :config

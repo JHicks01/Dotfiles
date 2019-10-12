@@ -33,8 +33,13 @@
 (define-key ivy-minibuffer-map (kbd "C-l") 'ivy-partial-or-done)
 (define-key ivy-minibuffer-map (kbd "C-k") 'ivy-previous-line)
 
+(define-key ivy-switch-buffer-map (kbd "C-j") 'ivy-next-line)
+(define-key ivy-switch-buffer-map (kbd "C-k") 'ivy-previous-line)
+
 ;;Counsel
 (define-key ivy-minibuffer-map (kbd "C-h") 'counsel-up-directory)
+
+(global-set-key (kbd "C-x C-r") 'counsel-recentf)
 
 ;;Swiper
 (global-set-key (kbd "C-s") 'swiper)

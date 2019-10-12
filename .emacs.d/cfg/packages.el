@@ -10,18 +10,17 @@
 ;; Ivy
 (use-package ivy
   :config
-
+  
   (use-package flx)
 
   (use-package ivy-xref
     :defer t
     :config
     (setq xref-show-xrefs-function #'ivy-xref-show-xrefs))
-
+  (ido-mode 0)
   (ivy-mode)
   (setq ivy-height 12)
   (setq ivy-count-format "%d/%d ")
-  (setq ivy-use-virtual-buffers t)
   (setq ivy-virtual-abbreviate 'full)
   (setq ivy-use-selectable-prompt t)
   (setq helm-make-completion-method 'ivy)
@@ -57,11 +56,11 @@
     :config (company-posframe-mode 1))
 
   (setq company-tooltip-align-annotations t)
-  (global-company-mode))
+  (global-company-mode t))
 
-;; Flycheck
 (use-package flycheck
-  :config (setq flycheck-check-syntax-automatically '(mode-enabled save)))
+  :config
+  (setq flycheck-check-syntax-automatically '(mode-enabled save)))
 
 ;; Projectile
 (use-package projectile
